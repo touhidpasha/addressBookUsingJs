@@ -1,5 +1,6 @@
 const prompt = require("prompt-sync")();
-let addressBook = {}
+let addressBook = {};
+let contacts=[];//to store multiple contacs
 const FIRST_NAME_PATTERN1 = /^[A-Z]{1}[a-z]{2,}$/;
 const LAST_NAME_PATTERN1 = /^[A-Z]{1}[a-z]{2,}$/;
 const FourChar_pattern = /^[A-Za-z]{4,}/;
@@ -37,7 +38,7 @@ while (flag) {
     addressBook["zip"] = prompt("enter ur zip ");
     while (!zip_patter.test(addressBook["zip"])) {
         console.log("invalid input,type again");
-        addressBook["zip"] = prompt("enter ur zip ");
+        
     }
     addressBook["phoneNumber"] = prompt("enter ur phoneNumber ");
     while (!PHONE_PATTERN1.test(addressBook["phoneNumber"])) {
@@ -49,6 +50,11 @@ while (flag) {
         console.log("invalid input,type again");
         addressBook["email"] = prompt("enter ur email ");
     }
-    console.log(addressBook);
-    flag = false;
+    
+    if(prompt("enter Y to add new contact")=='Y')
+    {contacts.push(addressBook);
+     flag = true;}
+     else
+     flag=false;
+     console.log(contacts);
 }
